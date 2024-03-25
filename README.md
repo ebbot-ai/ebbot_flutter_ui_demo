@@ -22,6 +22,6 @@ For more in depth instructions on how to use the `ebbot flutter ui` widgets, con
 
 There are currently two different examples (that you can find in the `lib/examples` folder):
 - **Ebbot Demo App with pages**. A stateful app that presents a bottom menu with some pages, where the last page is a stateful representation of the chat. 
-- Ebbot Demo App with popup which provides a stateless representation of the chat which opens in full screen and is cleared on dismiss.
+- **Ebbot Demo App with popup** which provides a stateless representation of the chat which opens in full screen and is cleared on dismiss.
   
  To toggle between them, change the `runApp` call in `lib/main.dart`.
