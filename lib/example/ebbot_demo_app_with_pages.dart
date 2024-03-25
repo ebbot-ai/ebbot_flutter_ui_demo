@@ -1,5 +1,3 @@
-
-
 import 'dart:convert';
 import 'dart:math';
 
@@ -27,7 +25,8 @@ class EbbotDemoAppWithPagesHome extends StatefulWidget {
   final String botId;
   const EbbotDemoAppWithPagesHome({super.key, required this.botId});
   @override
-  _EbbotDemoAppWithPagesHomeState createState() => _EbbotDemoAppWithPagesHomeState();
+  _EbbotDemoAppWithPagesHomeState createState() =>
+      _EbbotDemoAppWithPagesHomeState();
 }
 
 class _EbbotDemoAppWithPagesHomeState extends State<EbbotDemoAppWithPagesHome> {
@@ -38,7 +37,7 @@ class _EbbotDemoAppWithPagesHomeState extends State<EbbotDemoAppWithPagesHome> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Ebbot Chat Demo'),
+        title: const Text('Ebbot Chat Demo'),
       ),
       body: PageView(
         controller: _pageController,
@@ -48,9 +47,14 @@ class _EbbotDemoAppWithPagesHomeState extends State<EbbotDemoAppWithPagesHome> {
           });
         },
         children: [
-          ContentPage(key: PageStorageKey('Page1'), color: Colors.red, title: 'Page 1'),
-          ContentPage(key: PageStorageKey('Page2'), color: Colors.green, title: 'Page 2'),
-          EbbotUiWidget(key: PageStorageKey('ChatPage'), botId: widget.botId)
+          const ContentPage(
+              key: PageStorageKey('Page1'), color: Colors.red, title: 'Page 1'),
+          const ContentPage(
+              key: PageStorageKey('Page2'),
+              color: Colors.green,
+              title: 'Page 2'),
+          EbbotUiWidget(
+              key: const PageStorageKey('ChatPage'), botId: widget.botId)
         ],
       ),
       bottomNavigationBar: BottomNavigationBar(
@@ -58,11 +62,11 @@ class _EbbotDemoAppWithPagesHomeState extends State<EbbotDemoAppWithPagesHome> {
         onTap: (index) {
           _pageController.animateToPage(
             index,
-            duration: Duration(milliseconds: 500),
+            duration: const Duration(milliseconds: 500),
             curve: Curves.ease,
           );
         },
-        items: [
+        items: const [
           BottomNavigationBarItem(
             icon: Icon(Icons.home),
             label: 'Page 1',
@@ -79,7 +83,6 @@ class _EbbotDemoAppWithPagesHomeState extends State<EbbotDemoAppWithPagesHome> {
       ),
     );
   }
-
 }
 
 class ContentPage extends StatefulWidget {
@@ -93,21 +96,8 @@ class ContentPage extends StatefulWidget {
   _ContentPageState createState() => _ContentPageState();
 }
 
-class _ContentPageState extends State<ContentPage> with AutomaticKeepAliveClientMixin {
-  late String _randomString;
-
-  @override
-  void initState() {
-    super.initState();
-    _randomString = _generateRandomString();
-  }
-
-  String _generateRandomString() {
-    final random = Random.secure();
-    final values = List<int>.generate(16, (i) => random.nextInt(255));
-    return base64UrlEncode(values);
-  }
-
+class _ContentPageState extends State<ContentPage>
+    with AutomaticKeepAliveClientMixin {
   @override
   Widget build(BuildContext context) {
     super.build(context);
@@ -115,8 +105,8 @@ class _ContentPageState extends State<ContentPage> with AutomaticKeepAliveClient
       child: Container(
         color: widget.color,
         child: Text(
-          widget.title + _randomString,
-          style: TextStyle(fontSize: 24, color: Colors.white),
+          widget.title,
+          style: const TextStyle(fontSize: 24, color: Colors.white),
         ),
       ),
     );
