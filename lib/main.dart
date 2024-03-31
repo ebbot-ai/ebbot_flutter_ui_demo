@@ -1,19 +1,25 @@
 import 'dart:convert';
 import 'dart:math';
 
+import 'package:ebbot_dart_client/configuration/environment_configuration_config.dart';
+import 'package:ebbot_flutter_ui/configuration/ebbot_configuration.dart';
 import 'package:ebbot_flutter_ui_demo/example/ebbot_demo_app_with_pages.dart';
 import 'package:ebbot_flutter_ui_demo/example/ebbot_demo_app_with_popup.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 
 Future main() async {
-   await dotenv.load();
+  await dotenv.load();
 
-   var botId = dotenv.env['BOT_ID'];
-   if (botId == null) {
+  var botId = dotenv.env['BOT_ID'];
+  if (botId == null) {
     throw Exception('BOT_ID is not set in .env file');
-   }
+  }
 
-  runApp(EbbotDemoAppWithPages(botId: botId));
-  //runApp(EbbotDemoAppInFullScreen(botId: botId));
+  var configuration = EbbotConfigurationBuilder()
+      .environment(Environment.googleEUProduction)
+      .build();
+
+  runApp(EbbotDemoAppWithPages(botId: botId, configuration: configuration));
+  //runApp(EbbotDemoAppInFullScreen(botId: botId, configuration: configuration));
 }

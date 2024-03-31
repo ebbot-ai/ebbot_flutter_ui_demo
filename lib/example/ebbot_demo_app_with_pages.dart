@@ -1,7 +1,7 @@
 import 'dart:convert';
 import 'dart:math';
 
-import 'package:ebbot_dart_client/configuration/environment_config.dart';
+import 'package:ebbot_dart_client/configuration/configuration.dart';
 import 'package:ebbot_flutter_ui/configuration/ebbot_configuration.dart';
 import 'package:ebbot_flutter_ui/ebbot_ui_widget.dart';
 import 'package:ebbot_flutter_ui_demo/main.dart';
@@ -9,7 +9,9 @@ import 'package:flutter/material.dart';
 
 class EbbotDemoAppWithPages extends StatelessWidget {
   final String botId;
-  const EbbotDemoAppWithPages({super.key, required this.botId});
+  final EbbotConfiguration configuration;
+  const EbbotDemoAppWithPages(
+      {super.key, required this.botId, required this.configuration});
 
   @override
   Widget build(BuildContext context) {
@@ -18,14 +20,17 @@ class EbbotDemoAppWithPages extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: EbbotDemoAppWithPagesHome(botId: botId),
+      home:
+          EbbotDemoAppWithPagesHome(botId: botId, configuration: configuration),
     );
   }
 }
 
 class EbbotDemoAppWithPagesHome extends StatefulWidget {
   final String botId;
-  const EbbotDemoAppWithPagesHome({super.key, required this.botId});
+  final EbbotConfiguration configuration;
+  const EbbotDemoAppWithPagesHome(
+      {super.key, required this.botId, required this.configuration});
   @override
   _EbbotDemoAppWithPagesHomeState createState() =>
       _EbbotDemoAppWithPagesHomeState();
@@ -37,10 +42,6 @@ class _EbbotDemoAppWithPagesHomeState extends State<EbbotDemoAppWithPagesHome> {
 
   @override
   Widget build(BuildContext context) {
-    var configuration = EbbotConfigurationBuilder()
-        .environment(Environment.googleEUProduction)
-        .build();
-
     return Scaffold(
       appBar: AppBar(
         title: const Text('Ebbot Chat Demo'),
@@ -62,7 +63,7 @@ class _EbbotDemoAppWithPagesHomeState extends State<EbbotDemoAppWithPagesHome> {
           EbbotUiWidget(
               key: const PageStorageKey('ChatPage'),
               botId: widget.botId,
-              configuration: configuration)
+              configuration: widget.configuration)
         ],
       ),
       bottomNavigationBar: BottomNavigationBar(
