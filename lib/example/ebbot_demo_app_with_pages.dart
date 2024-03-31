@@ -1,6 +1,8 @@
 import 'dart:convert';
 import 'dart:math';
 
+import 'package:ebbot_dart_client/configuration/environment_config.dart';
+import 'package:ebbot_flutter_ui/configuration/ebbot_configuration.dart';
 import 'package:ebbot_flutter_ui/ebbot_ui_widget.dart';
 import 'package:ebbot_flutter_ui_demo/main.dart';
 import 'package:flutter/material.dart';
@@ -35,6 +37,10 @@ class _EbbotDemoAppWithPagesHomeState extends State<EbbotDemoAppWithPagesHome> {
 
   @override
   Widget build(BuildContext context) {
+    var configuration = EbbotConfigurationBuilder()
+        .environment(Environment.googleEUProduction)
+        .build();
+
     return Scaffold(
       appBar: AppBar(
         title: const Text('Ebbot Chat Demo'),
@@ -54,7 +60,9 @@ class _EbbotDemoAppWithPagesHomeState extends State<EbbotDemoAppWithPagesHome> {
               color: Colors.green,
               title: 'Page 2'),
           EbbotUiWidget(
-              key: const PageStorageKey('ChatPage'), botId: widget.botId)
+              key: const PageStorageKey('ChatPage'),
+              botId: widget.botId,
+              configuration: configuration)
         ],
       ),
       bottomNavigationBar: BottomNavigationBar(
