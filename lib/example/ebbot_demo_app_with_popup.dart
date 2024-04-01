@@ -10,7 +10,6 @@ class EbbotDemoAppInFullScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var a = botId;
     return MaterialApp(
       title: 'Ebbot Fullscreen Chat Demo',
       theme: ThemeData(
@@ -33,7 +32,7 @@ class EbbotDemoAppInFullScreenHome extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Chat demo'),
+        title: const Text('Chat demo'),
       ),
       body: Center(
         child: OpenDialogButton(botId: botId, configuration: configuration),
@@ -63,7 +62,7 @@ class OpenDialogButton extends StatelessWidget {
           barrierLabel: 'Close',
         );
       },
-      child: Text('Open chat in fullscreen'),
+      child: const Text('Open chat in fullscreen'),
     );
   }
 }
@@ -74,20 +73,21 @@ class EbbotUiWidgetFullscreen extends StatelessWidget {
   final double widthRatio = 0.9;
   final double heightRatio = 0.9;
 
-  EbbotUiWidgetFullscreen({required this.botId, required this.configuration});
+  const EbbotUiWidgetFullscreen(
+      {super.key, required this.botId, required this.configuration});
 
   @override
   Widget build(BuildContext context) {
     return Dialog(
       backgroundColor: Colors.white,
-      insetPadding: EdgeInsets.symmetric(horizontal: 20.0),
+      insetPadding: const EdgeInsets.symmetric(horizontal: 20.0),
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(20.0),
       ),
       child: ClipRRect(
         // Apply clip to ensure rounded corners for content
         borderRadius: BorderRadius.circular(20.0),
-        child: Container(
+        child: SizedBox(
           width: MediaQuery.of(context).size.width *
               widthRatio, // 80% of screen width
           height: MediaQuery.of(context).size.height *
@@ -99,7 +99,7 @@ class EbbotUiWidgetFullscreen extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.end,
                 children: [
                   IconButton(
-                    icon: Icon(Icons.close),
+                    icon: const Icon(Icons.close),
                     onPressed: () {
                       Navigator.pop(context);
                     },

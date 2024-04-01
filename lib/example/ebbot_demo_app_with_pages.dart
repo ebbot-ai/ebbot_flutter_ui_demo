@@ -1,10 +1,5 @@
-import 'dart:convert';
-import 'dart:math';
-
-import 'package:ebbot_dart_client/configuration/configuration.dart';
 import 'package:ebbot_flutter_ui/configuration/ebbot_configuration.dart';
 import 'package:ebbot_flutter_ui/ebbot_ui_widget.dart';
-import 'package:ebbot_flutter_ui_demo/main.dart';
 import 'package:flutter/material.dart';
 
 class EbbotDemoAppWithPages extends StatelessWidget {
@@ -16,7 +11,7 @@ class EbbotDemoAppWithPages extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Bottom Menu Demo',
+      title: 'Ebbot Stateful chat with pages demo',
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
@@ -32,13 +27,13 @@ class EbbotDemoAppWithPagesHome extends StatefulWidget {
   const EbbotDemoAppWithPagesHome(
       {super.key, required this.botId, required this.configuration});
   @override
-  _EbbotDemoAppWithPagesHomeState createState() =>
-      _EbbotDemoAppWithPagesHomeState();
+  EbbotDemoAppWithPagesHomeState createState() =>
+      EbbotDemoAppWithPagesHomeState();
 }
 
-class _EbbotDemoAppWithPagesHomeState extends State<EbbotDemoAppWithPagesHome> {
+class EbbotDemoAppWithPagesHomeState extends State<EbbotDemoAppWithPagesHome> {
   int _selectedIndex = 0;
-  PageController _pageController = PageController();
+  final PageController _pageController = PageController();
 
   @override
   Widget build(BuildContext context) {
@@ -98,14 +93,13 @@ class ContentPage extends StatefulWidget {
   final Color color;
   final String title;
 
-  const ContentPage({Key? key, required this.color, required this.title})
-      : super(key: key);
+  const ContentPage({super.key, required this.color, required this.title});
 
   @override
-  _ContentPageState createState() => _ContentPageState();
+  ContentPageState createState() => ContentPageState();
 }
 
-class _ContentPageState extends State<ContentPage>
+class ContentPageState extends State<ContentPage>
     with AutomaticKeepAliveClientMixin {
   @override
   Widget build(BuildContext context) {
