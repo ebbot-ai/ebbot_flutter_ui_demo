@@ -1,5 +1,5 @@
-import 'package:ebbot_flutter_ui/configuration/ebbot_configuration.dart';
-import 'package:ebbot_flutter_ui/ebbot_ui_widget.dart';
+import 'package:ebbot_flutter_ui/v1/configuration/ebbot_configuration.dart';
+import 'package:ebbot_flutter_ui/v1/ebbot_ui_widget.dart';
 import 'package:flutter/material.dart';
 
 class EbbotDemoAppWithPages extends StatelessWidget {
