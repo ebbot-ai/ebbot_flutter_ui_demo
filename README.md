@@ -4,6 +4,9 @@
 
 The purpose of this repository, is to provide examples and give you some ideas of how to implement the Ebbot Chatbot into your Flutter application.
 
+> [!NOTE]
+> For more in depth instructions on how to use the `ebbot_flutter_ui` widgets, consult this repository: https://github.com/ebbot-ai/ebbot_flutter_ui
+
 ## Getting started
 
 ### Running for the first time
@@ -28,6 +31,3 @@ There are currently two different examples (that you can find in the `lib/exampl
 - **Ebbot Demo App with popup** which provides a stateless representation of the chat which opens in full screen and is cleared on dismiss.
   
  To toggle between them, change the `runApp` call in `lib/main.dart`.
-
- > [!NOTE]
-> For more in depth instructions on how to use the `ebbot_flutter_ui` widgets, consult this repository: https://github.com/ebbot-ai/ebbot_flutter_ui
