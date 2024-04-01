@@ -1,6 +1,6 @@
 # ebbot_flutter_ui_demo
 
-## This is the Ebbot Chatbot Demo page
+## This is the Ebbot Chatbot Demo App
 
 The purpose of this repository, is to provide examples and give you some ideas of how to implement the Ebbot Chatbot into your Flutter application.
 
