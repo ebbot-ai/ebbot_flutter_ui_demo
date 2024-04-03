@@ -5,7 +5,7 @@
 The purpose of this repository, is to provide examples and give you some ideas of how to implement the Ebbot Chatbot into your Flutter application.
 
 > [!NOTE]
-> For more in depth instructions on how to use the `ebbot_flutter_ui` widgets, consult this repository: https://github.com/ebbot-ai/ebbot_flutter_ui
+> For more in depth instructions on how to use the `ebbot_flutter_ui` widget, consult this repository: https://github.com/ebbot-ai/ebbot_flutter_ui
 
 ## Getting started
 
