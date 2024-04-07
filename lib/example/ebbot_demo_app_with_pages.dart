@@ -1,5 +1,5 @@
 import 'package:ebbot_flutter_ui/v1/configuration/ebbot_configuration.dart';
-import 'package:ebbot_flutter_ui/v1/ebbot_ui_widget.dart';
+import 'package:ebbot_flutter_ui/v1/ebbot_flutter_ui.dart';
 import 'package:flutter/material.dart';
 
 class EbbotDemoAppWithPages extends StatelessWidget {
@@ -55,7 +55,7 @@ class EbbotDemoAppWithPagesHomeState extends State<EbbotDemoAppWithPagesHome> {
               key: PageStorageKey('Page2'),
               color: Colors.green,
               title: 'Page 2'),
-          EbbotUiWidget(
+          EbbotFlutterUi(
               key: const PageStorageKey('ChatPage'),
               botId: widget.botId,
               configuration: widget.configuration)

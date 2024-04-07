@@ -1,5 +1,5 @@
 import 'package:ebbot_flutter_ui/v1/configuration/ebbot_configuration.dart';
-import 'package:ebbot_flutter_ui/v1/ebbot_ui_widget.dart';
+import 'package:ebbot_flutter_ui/v1/ebbot_flutter_ui.dart';
 import 'package:flutter/material.dart';
 
 class EbbotDemoAppInFullScreen extends StatelessWidget {
@@ -108,7 +108,7 @@ class EbbotUiWidgetFullscreen extends StatelessWidget {
               ),
               // Content
               Expanded(
-                child: EbbotUiWidget(
+                child: EbbotFlutterUi(
                     botId: botId), // Assuming EbbotUiWidget is your chat UI
               ),
             ],
