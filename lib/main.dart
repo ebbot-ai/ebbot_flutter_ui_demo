@@ -12,8 +12,18 @@ Future main() async {
     throw Exception('BOT_ID is not set in .env file');
   }
 
+  var userAttributes = {
+    'name': 'John Doe',
+    'email': 'john@doe.com',
+    'age': 30,
+    'height': 180.0,
+    'isPremium': true,
+    'lastLogin': DateTime.now().millisecondsSinceEpoch
+  };
+
   var configuration = EbbotConfigurationBuilder()
-      .environment(Environment.ovhEUProduction)
+      .environment(Environment.googleEUProduction)
+      .userAttributes(userAttributes)
       .build();
 
   runApp(EbbotDemoAppWithPages(botId: botId, configuration: configuration));
