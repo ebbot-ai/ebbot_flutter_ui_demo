@@ -14,10 +14,7 @@ dependencies:
     git:
       url: https://github.com/ebbot-ai/ebbot_flutter_ui
       ref: v0.0.6
-  ebbot_dart_client:
-    git:
-      url: https://github.com/ebbot-ai/ebbot_dart_client
-      ref: v0.0.6
+
   dotenv: ^4.2.0
   flutter_dotenv: ^5.1.0
 

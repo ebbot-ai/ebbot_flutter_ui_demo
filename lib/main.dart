@@ -1,3 +1,4 @@
+// ignore: unused_import, depend_on_referenced_packages
 import 'package:ebbot_dart_client/valueobjects/environment.dart';
 import 'package:ebbot_flutter_ui/v1/configuration/ebbot_configuration.dart';
 import 'package:ebbot_flutter_ui_demo/example/ebbot_demo_app_with_pages.dart';
