@@ -173,20 +173,20 @@ packages:
     dependency: "direct main"
     description:
       path: "."
-      ref: "0.0.3"
-      resolved-ref: "2fa4f08a805f5a308f1a664d1fedfb17dbd0ba43"
+      ref: "0.0.5"
+      resolved-ref: "21858be1a7644f24eedb003348843b58683c89a1"
       url: "https://github.com/ebbot-ai/ebbot_dart_client"
     source: git
-    version: "0.0.3"
+    version: "0.0.5"
   ebbot_flutter_ui:
     dependency: "direct main"
     description:
       path: "."
-      ref: "0.0.3"
-      resolved-ref: "3ca2143db2686e81913ec53c8ef01ff89e9617f7"
+      ref: "0.0.5"
+      resolved-ref: c8fd6013176e471d7242e25caa881291fe5b46fe
       url: "https://github.com/ebbot-ai/ebbot_flutter_ui"
     source: git
-    version: "0.0.3"
+    version: "0.0.5"
   equatable:
     dependency: transitive
     description:
