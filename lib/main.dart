@@ -22,7 +22,7 @@ Future main() async {
   };
 
   var configuration = EbbotConfigurationBuilder()
-      .environment(Environment.googleEUProduction)
+      .environment(Environment.ovhEUProduction)
       .userAttributes(userAttributes)
       .build();
 
