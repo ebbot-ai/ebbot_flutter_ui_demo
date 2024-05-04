@@ -55,10 +55,15 @@ class EbbotDemoAppWithPagesHomeState extends State<EbbotDemoAppWithPagesHome> {
               key: PageStorageKey('Page2'),
               color: Colors.green,
               title: 'Page 2'),
-          EbbotFlutterUi(
-              key: const PageStorageKey('ChatPage'),
-              botId: widget.botId,
-              configuration: widget.configuration)
+          Container(
+              decoration: BoxDecoration(
+                color: Colors.grey[200],
+                borderRadius: BorderRadius.circular(20.0),
+              ),
+              child: EbbotFlutterUi(
+                  key: const PageStorageKey('ChatPage'),
+                  botId: widget.botId,
+                  configuration: widget.configuration))
         ],
       ),
       bottomNavigationBar: BottomNavigationBar(

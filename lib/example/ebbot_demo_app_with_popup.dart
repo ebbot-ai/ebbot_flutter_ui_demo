@@ -109,7 +109,10 @@ class EbbotUiWidgetFullscreen extends StatelessWidget {
               // Content
               Expanded(
                 child: EbbotFlutterUi(
-                    botId: botId), // Assuming EbbotUiWidget is your chat UI
+                  key: const PageStorageKey('ChatPage'),
+                  botId: botId,
+                  configuration: configuration,
+                ),
               ),
             ],
           ),
