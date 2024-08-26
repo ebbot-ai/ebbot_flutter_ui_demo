@@ -1,11 +1,51 @@
 // ignore: unused_import, depend_on_referenced_packages
 import 'package:ebbot_dart_client/valueobjects/environment.dart';
+import 'package:ebbot_flutter_ui/v1/configuration/ebbot_behaviour.dart';
+import 'package:ebbot_flutter_ui/v1/configuration/ebbot_callback.dart';
 import 'package:ebbot_flutter_ui/v1/configuration/ebbot_configuration.dart';
+import 'package:ebbot_flutter_ui/v1/configuration/ebbot_user_configuration.dart';
+import 'package:ebbot_flutter_ui/v1/controller/ebbot_api_controller.dart';
 import 'package:ebbot_flutter_ui_demo/example/ebbot_demo_app_with_pages.dart';
 import 'package:ebbot_flutter_ui_demo/example/ebbot_demo_app_with_popup.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_chat_ui/flutter_chat_ui.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
+
+Future<void> onLoadError(EbbotLoadError error) async {
+  print("CALLBACK: onLoadError: $error");
+}
+
+bool hasAlreadyRestarted = false;
+
+Future<void> onLoad() async {
+  print("CALLBACK: onLoad");
+}
+
+Future<void> onRestartConversation() async {
+  print("CALLBACK: onRestartConversation");
+}
+
+Future<void> onEndConversation() async {
+  print("CALLBACK: onEndConversation");
+}
+
+Future<void> onMessage(String message) async {
+  print("CALLBACK: onMessage: $message");
+}
+
+Future<void> onBotMessage(String message) async {
+  print("CALLBACK: onBotMessage: $message");
+}
+
+Future<void> onUserMessage(String message) async {
+  print("CALLBACK: onUserMessage: $message");
+}
+
+Future<void> onStartConversation(String message) async {
+  print("CALLBACK: onStartConversation");
+}
+
+var apiController = EbbotApiController();
 
 Future main() async {
   await dotenv.load();
@@ -24,10 +64,32 @@ Future main() async {
     'lastLogin': DateTime.now().millisecondsSinceEpoch
   };
 
+  var userConfiguration =
+      EbbotUserConfigurationBuilder().userAttributes(userAttributes).build();
+
+  var callback = EbbotCallbackBuilder()
+      .onLoadError(onLoadError)
+      .onLoad(onLoad)
+      .onRestartConversation(onRestartConversation)
+      .onEndConversation(onEndConversation)
+      .onMessage(onMessage)
+      .onBotMessage(onBotMessage)
+      .onUserMessage(onUserMessage)
+      .onStartConversation(onStartConversation)
+      .build();
+
+  var ebbotBehaviourInput = EbbotBehaviourInputBuilder()
+      .enterPressed(EbbotBehaviourInputEnterPressed.sendMessage)
+      .build();
+  var behaviour = EbbotBehaviourBuilder().input(ebbotBehaviourInput).build();
+
   var configuration = EbbotConfigurationBuilder()
+      .apiController(apiController)
       .environment(Environment.ovhEUProduction)
-      .userAttributes(userAttributes)
+      .userConfiguration(userConfiguration)
+      .behaviour(behaviour)
       .theme(const ForestChatTheme())
+      .callback(callback)
       .build();
 
   runApp(EbbotDemoAppWithPages(botId: botId, configuration: configuration));
