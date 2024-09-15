@@ -3,6 +3,7 @@ import 'package:ebbot_dart_client/valueobjects/environment.dart';
 import 'package:ebbot_flutter_ui/v1/configuration/ebbot_behaviour.dart';
 import 'package:ebbot_flutter_ui/v1/configuration/ebbot_callback.dart';
 import 'package:ebbot_flutter_ui/v1/configuration/ebbot_configuration.dart';
+import 'package:ebbot_flutter_ui/v1/configuration/ebbot_log_configuration.dart';
 import 'package:ebbot_flutter_ui/v1/configuration/ebbot_user_configuration.dart';
 import 'package:ebbot_flutter_ui/v1/controller/ebbot_api_controller.dart';
 import 'package:ebbot_flutter_ui_demo/example/ebbot_demo_app_with_pages.dart';
@@ -83,6 +84,8 @@ Future main() async {
       .build();
   var behaviour = EbbotBehaviourBuilder().input(ebbotBehaviourInput).build();
 
+  var logConfiguration = EbbotLogConfigurationBuilder().logLevel(EbbotLogLevel.info).enabled(true).build();
+
   var configuration = EbbotConfigurationBuilder()
       .apiController(apiController)
       .environment(Environment.ovhEUProduction)
@@ -90,6 +93,7 @@ Future main() async {
       .behaviour(behaviour)
       .theme(const ForestChatTheme())
       .callback(callback)
+      .logConfiguration(logConfiguration)
       .build();
 
   runApp(EbbotDemoAppWithPages(botId: botId, configuration: configuration));
