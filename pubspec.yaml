@@ -1,7 +1,7 @@
 name: ebbot_flutter_ui_demo
 description: "A ebbot flutter ui demo app."
 publish_to: 'none'
-version: 0.1.2
+version: 0.1.4
 
 environment:
   sdk: '>=3.3.1 <4.0.0'
@@ -12,8 +12,8 @@ dependencies:
 
   ebbot_flutter_ui:
     git:
-      url: https://github.com/ebbotapp/ebbot_flutter_ui
-      ref: v0.1.2
+      url: https://github.com/ebbot-ai/ebbot_flutter_ui
+      ref: v0.1.5
 
   dotenv: ^4.2.0
   flutter_dotenv: ^5.1.0

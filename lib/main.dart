@@ -7,6 +7,7 @@ import 'package:ebbot_flutter_ui/v1/configuration/ebbot_log_configuration.dart';
 import 'package:ebbot_flutter_ui/v1/configuration/ebbot_user_configuration.dart';
 import 'package:ebbot_flutter_ui/v1/controller/ebbot_api_controller.dart';
 import 'package:ebbot_flutter_ui_demo/example/ebbot_demo_app_with_pages.dart';
+// ignore: unused_import, depend_on_referenced_packages
 import 'package:ebbot_flutter_ui_demo/example/ebbot_demo_app_with_popup.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_chat_ui/flutter_chat_ui.dart';
@@ -84,7 +85,10 @@ Future main() async {
       .build();
   var behaviour = EbbotBehaviourBuilder().input(ebbotBehaviourInput).build();
 
-  var logConfiguration = EbbotLogConfigurationBuilder().logLevel(EbbotLogLevel.info).enabled(true).build();
+  var logConfiguration = EbbotLogConfigurationBuilder()
+      .logLevel(EbbotLogLevel.debug)
+      .enabled(true)
+      .build();
 
   var configuration = EbbotConfigurationBuilder()
       .apiController(apiController)
