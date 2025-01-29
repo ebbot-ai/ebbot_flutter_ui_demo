@@ -2,11 +2,12 @@
 import 'package:ebbot_dart_client/valueobjects/environment.dart';
 import 'package:ebbot_flutter_ui/v1/configuration/ebbot_behaviour.dart';
 import 'package:ebbot_flutter_ui/v1/configuration/ebbot_callback.dart';
+import 'package:ebbot_flutter_ui/v1/configuration/ebbot_chat.dart';
 import 'package:ebbot_flutter_ui/v1/configuration/ebbot_configuration.dart';
 import 'package:ebbot_flutter_ui/v1/configuration/ebbot_log_configuration.dart';
 import 'package:ebbot_flutter_ui/v1/configuration/ebbot_user_configuration.dart';
 import 'package:ebbot_flutter_ui/v1/controller/ebbot_api_controller.dart';
-import 'package:ebbot_flutter_ui_demo/example/ebbot_demo_app_with_pages.dart';
+import 'package:ebbot_flutter_ui_demo/example/ebbot_demo_app_toggle_show.dart';
 // ignore: unused_import, depend_on_referenced_packages
 import 'package:ebbot_flutter_ui_demo/example/ebbot_demo_app_with_popup.dart';
 import 'package:flutter/material.dart';
@@ -90,6 +91,13 @@ Future main() async {
       .enabled(true)
       .build();
 
+  final ratingSelected = Image.asset("assets/sunglasses.png");
+  final rating =
+      Opacity(opacity: 0.5, child: Image.asset("assets/sunglasses.png"));
+
+  var chat =
+      EbbotChatBuilder().rating(rating).ratingSelected(ratingSelected).build();
+
   var configuration = EbbotConfigurationBuilder()
       .apiController(apiController)
       .environment(Environment.ovhEUProduction)
@@ -98,10 +106,12 @@ Future main() async {
       .theme(const ForestChatTheme())
       .callback(callback)
       .logConfiguration(logConfiguration)
+      .chat(chat)
       .build();
 
-  runApp(EbbotDemoAppWithPages(botId: botId, configuration: configuration));
+  //runApp(EbbotDemoAppWithPages(botId: botId, configuration: configuration));
   //runApp(EbbotDemoAppInFullScreen(botId: botId, configuration: configuration));
+  runApp(EbbotDemoAppToggleShow(botId: botId, configuration: configuration));
 }
 
 class ForestChatTheme extends DefaultChatTheme {
