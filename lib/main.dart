@@ -7,7 +7,6 @@ import 'package:ebbot_flutter_ui/v1/configuration/ebbot_configuration.dart';
 import 'package:ebbot_flutter_ui/v1/configuration/ebbot_log_configuration.dart';
 import 'package:ebbot_flutter_ui/v1/configuration/ebbot_user_configuration.dart';
 import 'package:ebbot_flutter_ui/v1/controller/ebbot_api_controller.dart';
-import 'package:ebbot_flutter_ui_demo/example/ebbot_demo_app_toggle_show.dart';
 // ignore: unused_import, depend_on_referenced_packages
 import 'package:ebbot_flutter_ui_demo/example/ebbot_demo_app_with_popup.dart';
 import 'package:flutter/material.dart';
@@ -48,6 +47,10 @@ Future<void> onStartConversation(String message) async {
   print("CALLBACK: onStartConversation");
 }
 
+Future<void> onSessionData(String chatId) async {
+  print("CALLBACK: onSessionData, chatId: $chatId");
+}
+
 var apiController = EbbotApiController();
 
 Future main() async {
@@ -79,6 +82,7 @@ Future main() async {
       .onBotMessage(onBotMessage)
       .onUserMessage(onUserMessage)
       .onStartConversation(onStartConversation)
+      .onSessionData(onSessionData)
       .build();
 
   var ebbotBehaviourInput = EbbotBehaviourInputBuilder()
@@ -98,6 +102,10 @@ Future main() async {
   var chat =
       EbbotChatBuilder().rating(rating).ratingSelected(ratingSelected).build();
 
+  //var someChatId =
+  ""; // Provide your chatId here, it can be obtained from the onSessionData callback
+  //var session = EbbotSessionBuilder().chatId(someChatId).build();
+
   var configuration = EbbotConfigurationBuilder()
       .apiController(apiController)
       .environment(Environment.ovhEUProduction)
@@ -107,11 +115,12 @@ Future main() async {
       .callback(callback)
       .logConfiguration(logConfiguration)
       .chat(chat)
+      //.session(session)
       .build();
 
   //runApp(EbbotDemoAppWithPages(botId: botId, configuration: configuration));
-  //runApp(EbbotDemoAppInFullScreen(botId: botId, configuration: configuration));
-  runApp(EbbotDemoAppToggleShow(botId: botId, configuration: configuration));
+  runApp(EbbotDemoAppInFullScreen(botId: botId, configuration: configuration));
+  //runApp(EbbotDemoAppToggleShow(botId: botId, configuration: configuration));
 }
 
 class ForestChatTheme extends DefaultChatTheme {
