@@ -13,7 +13,7 @@ dependencies:
   ebbot_flutter_ui:
     git:
       url: https://github.com/ebbot-ai/ebbot_flutter_ui
-      ref: v0.2.2
+      ref: v0.2.4
 
   dotenv: ^4.2.0
   flutter_dotenv: ^5.1.0
@@ -22,7 +22,6 @@ dependencies:
 dev_dependencies:
   flutter_test:
     sdk: flutter
-  flutter_lints: ^3.0.0
 
 flutter:
   uses-material-design: true
