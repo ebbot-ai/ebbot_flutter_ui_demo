@@ -13,7 +13,7 @@ dependencies:
   ebbot_flutter_ui:
     git:
       url: https://github.com/ebbot-ai/ebbot_flutter_ui
-      ref: v0.2.4
+      ref: v0.2.5
 
   dotenv: ^4.2.0
   flutter_dotenv: ^5.1.0
