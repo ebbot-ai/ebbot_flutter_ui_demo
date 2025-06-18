@@ -60,12 +60,11 @@ Environment getEnvironmentFromString(String environmentString) {
       return Environment.googleEUProduction;
     case 'googlecanadaproduction':
       return Environment.googleCanadaProduction;
-    case 'release':
-      return Environment.release;
     case 'staging':
       return Environment.staging;
     default:
-      throw Exception('Unknown environment: $environmentString. Available environments: ovhEUProduction, googleEUProduction, googleCanadaProduction, release, staging');
+      throw Exception(
+          'Unknown environment: $environmentString. Available environments: ovhEUProduction, googleEUProduction, googleCanadaProduction, release, staging');
   }
 }
 
