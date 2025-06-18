@@ -52,6 +52,23 @@ Future<void> onSessionData(String chatId) async {
 
 var apiController = EbbotApiController();
 
+Environment getEnvironmentFromString(String environmentString) {
+  switch (environmentString.toLowerCase()) {
+    case 'ovheuproduction':
+      return Environment.ovhEUProduction;
+    case 'googleeuproduction':
+      return Environment.googleEUProduction;
+    case 'googlecanadaproduction':
+      return Environment.googleCanadaProduction;
+    case 'release':
+      return Environment.release;
+    case 'staging':
+      return Environment.staging;
+    default:
+      throw Exception('Unknown environment: $environmentString. Available environments: ovhEUProduction, googleEUProduction, googleCanadaProduction, release, staging');
+  }
+}
+
 Future main() async {
   await dotenv.load();
 
@@ -59,6 +76,9 @@ Future main() async {
   if (botId == null) {
     throw Exception('BOT_ID is not set in .env file');
   }
+
+  var environmentString = dotenv.env['ENVIRONMENT'] ?? 'ovhEUProduction';
+  var environment = getEnvironmentFromString(environmentString);
 
   var userAttributes = {
     'name': 'John Doe',
@@ -107,7 +127,7 @@ Future main() async {
 
   var configuration = EbbotConfigurationBuilder()
       .apiController(apiController)
-      .environment(Environment.ovhEUProduction)
+      .environment(environment)
       .userConfiguration(userConfiguration)
       .behaviour(behaviour)
       .callback(callback)
